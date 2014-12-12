@@ -26,11 +26,12 @@ void Stage::update( int dt )
 {
     snaik.update( dt );
 
-    std::list<Food>::iterator iter;
+    std::list< Food >::iterator foodIterator;
     Food* food;
-    for ( iter = foods.begin(); iter != foods.end(); iter++ )
+    for ( foodIterator = foods.begin(); foodIterator != foods.end(); foodIterator++ )
     {
-        food = &( *iter );
+        food = &( *foodIterator );
+
         if ( snaik.getX() == food->x && snaik.getY() == food->y )
         {
             snaik.eat( 1 );
@@ -38,6 +39,16 @@ void Stage::update( int dt )
             food->x = rand() % 20;
             food->y = rand() % 15;
         }
+    }
+
+
+    std::list< Snaik >::iterator snaikIterator;
+    Snaik* iSnaik;
+    for ( snaikIterator = snaiks.begin(); snaikIterator != snaiks.end(); snaikIterator++ )
+    {
+        iSnaik = &( *snaikIterator );
+
+        iSnaik->update( dt );
     }
 }
 
@@ -58,6 +69,12 @@ void Stage::render( SDL_Renderer* renderer )
     }
 
     snaik.render( renderer );
+
+
+    for ( auto snaik : snaiks )
+    {
+        snaik.render( renderer );
+    }
 }
 
 

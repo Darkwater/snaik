@@ -28,6 +28,7 @@ class Stage
     private:
 
         Snaik snaik;
+        std::list< Snaik > snaiks;
 
         std::list< Food > foods;
 };

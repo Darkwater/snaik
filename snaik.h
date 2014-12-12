@@ -20,13 +20,9 @@ class Snaik
 
         void onKeyDown( SDL_Keysym* keysym );
 
-        void tick( );
-
         void update( int dt );
 
         void render( SDL_Renderer* renderer );
-
-        void cleanup( );
 
         void setDirection( Direction direction );
 
@@ -52,6 +48,10 @@ class Snaik
 
         int tickTimer;
         static const int tickInterval = 120;
+
+        void tick( );
+
+        void cleanup( );
 };
 
 #endif

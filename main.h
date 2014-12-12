@@ -2,6 +2,7 @@
     #define _main_H_
 
 #include <SDL2/SDL.h>
+#include <enet/enet.h>
 
 #include "stage.h"
 
@@ -27,12 +28,16 @@ class Main
         SDL_Window* window;
         SDL_Renderer* renderer;
 
+        ENetHost* client;
+        ENetPeer* peer;
+
         Stage stage;
 
 
         bool initialize( );
 
-        void handleEvent( SDL_Event* Event );
+        void handleEvent( SDL_Event* event );
+        void handleNetEvent( ENetEvent event );
 
         void update( int dt );
 
